@@ -83,14 +83,10 @@ async def start(message):
 
 @dp.message_handler(text='Купить')
 async def get_buying_list(message):
-    with open('files/1.png', 'rb') as img:
-        await message.answer_photo(img, 'Название: Product1 | Описание: описание 1 | Цена: 100p')
-    with open('files/2.png', 'rb') as img:
-        await message.answer_photo(img, 'Название: Product2 | Описание: описание 2 | Цена: 200p')
-    with open('files/3.png', 'rb') as img:
-        await message.answer_photo(img, 'Название: Product3 | Описание: описание 3 | Цена: 300p')
-    with open('files/4.png', 'rb') as img:
-        await message.answer_photo(img, 'Название: Product4 | Описание: описание 4 | Цена: 400p')
+    for i in range(1, 5):
+        await message.answer(f'Название: Product{i} | Описание: описание {i} | Цена: {i*100}p')
+        with open(f'/files/{i}.png', "rb") as img:
+            await message.answer_photo(img)
     await message.answer('Выберите продукт для покупки:', reply_markup=product_inl)
 
 
