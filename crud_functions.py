@@ -22,7 +22,7 @@ def initiate_db():
 
 
 def get_all_products():
-    connection = sqlite3.connect('products.dp')
+    connection = sqlite3.connect('products.db')
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM Products')
     products = cursor.fetchall()
